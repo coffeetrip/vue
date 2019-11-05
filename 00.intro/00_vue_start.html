@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <input id="js-input" type="text">
+  <p id="js-p"></p>
+
+  <div id="app">
+    {{message}}
+    <!-- v-model 이 msg변수를 찾는다. -->
+    <input id="vue-input" type="text" v-model="msg">
+    <p id="vue-p">{{msg}}</p>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
+  <script>
+    // id가 js-input 인 input 태그에 글자가 써지면
+    // p 태그 안에도 글자 출력
+    const JsInput = document.querySelector('#js-input')  // 이벤트 발생시킬 애 찾기
+    JsInput.addEventListener('keydown', (event) => {
+      const jsP = document.querySelector('#js-p')  // 넣어야하는 애
+      jsP.innerText = JsInput.value
+    })
+
+
+
+    // vue
+    // app 변수설정 = 인스턴스생성할 때 new를 적어야한다. 
+    const app = new Vue({   
+      el: '#app',  // element(어디로 연결): id가 app인 애와 연결
+      data: {
+        message: 'hello vue!!',  // message 변수설정
+        msg: '',
+      }
+    }) 
+  </script>
+</body>
+</html>

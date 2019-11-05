@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">{{message}} - {{count}}</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',  // 마운트      // app.$el
+      data: {                    // app.$data
+        message: 'hello vue',
+        count: 0                // app.count
+      },
+      methods: {
+        // app.plus() 할때마다 실행 => 함수를 정의할때는 function함수를 사용한다.
+        plus: function() {      
+          //console.log(this)     // vue instance = this = app.pls() = 전체
+          this.count++
+        },
+        // function함수 : app.minus()
+        minus(){   
+          this.count--
+        }
+        // 에로우함수는 this를 dom의 최상위를 가리키기 때문에 window가 나온다.
+        //plus2: () => {
+        //  console.log(this)  
+        //}
+      }
+    })
+  </script>
+
+</body>
+</html>
